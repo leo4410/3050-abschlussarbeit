@@ -5,6 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import StationsMap from "../maps/stations.map.tsx"
 
 const STATIONDATA_URL = "http://localhost:8000/";
 
@@ -27,29 +28,33 @@ function StationsComponent() {
   return (
     <>
       {stations !== undefined &&
-        <TableContainer>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Station</TableCell>
-                <TableCell>Kürzel</TableCell>
-                <TableCell>Breitengrad</TableCell>
-                <TableCell>Längengrad</TableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody>
-              {stations.map((item, index) => (
-                <TableRow key={index}>
-                  <TableCell>{item["label"]}</TableCell>
-                  <TableCell>{item["station_code"]}</TableCell>
-                  <TableCell>{item["lat"]}</TableCell>
-                  <TableCell>{item["lon"]}</TableCell>
+        <div>
+          <TableContainer>
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Station</TableCell>
+                  <TableCell>Kürzel</TableCell>
+                  <TableCell>Breitengrad</TableCell>
+                  <TableCell>Längengrad</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+
+              <TableBody>
+                {stations.map((item, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{item["label"]}</TableCell>
+                    <TableCell>{item["station_code"]}</TableCell>
+                    <TableCell>{item["lat"]}</TableCell>
+                    <TableCell>{item["lon"]}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+
+          <StationsMap stations={stations}></StationsMap>
+        </div>
       }
     </>
   )
