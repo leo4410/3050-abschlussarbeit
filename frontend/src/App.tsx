@@ -1,32 +1,29 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from 'react'
 import StationsComponent from "./components/stations.component.tsx"
+import SnowComponent from './components/snow.component.tsx';
+import { Button, ButtonGroup } from '@mui/material';
 
 const SNOWDATA_URL = "http://localhost:8000/";
+const STATIONDATA_URL = "http://localhost:8000/";
 
 function App() {
 
-  /*const [data, setData] = useState()
-
-  <// useEffect(() => {
-    // fetchDailyData(2024, 12, 22);
-  // }, []);
-
-  async function fetchDailyData(year: number, month: number, day: number) {
-
-    var query = SNOWDATA_URL + "snow/year/"
-    query = query + year + "?month=" + month + "&day=" + day;
-
-    var responsedata = await fetch(query);
-    var jsondata = await responsedata.json();
-    setData(jsondata)
-    console.log(jsondata)
-  }*/
+  const [menu, setMenu] = useState("Schneehöhen")
+  const [selectedStations, setSelectedStations] = useState<any[]>([])
 
   return (
     <div>
-      <StationsComponent></StationsComponent>
+      <ButtonGroup variant="outlined" aria-label="Basic button group">
+        {menu === "Schneehöhen" && <Button value="Schneehöhen" variant="contained" onClick={(event) => { setMenu(event.target.value) }}>Schneehöhen</Button>}
+        {menu !== "Schneehöhen" && <Button value="Schneehöhen" variant="outlined" onClick={(event) => { setMenu(event.target.value) }}>Schneehöhen</Button>}
+        {menu === "Standorte" && <Button value="Standorte" variant="contained" onClick={(event) => { setMenu(event.target.value) }}>Standorte</Button>}
+        {menu !== "Standorte" && <Button value="Standorte" variant="outlined" onClick={(event) => { setMenu(event.target.value) }}>Standorte</Button>}
+      </ButtonGroup>
+
+
+      {menu === "Schneehöhen" && <SnowComponent stations={selectedStations}></SnowComponent>}
+      {menu === "Standorte" && <StationsComponent selectedStations={selectedStations} setSelectedStations={setSelectedStations}></StationsComponent>}
+
     </div>
 
   )

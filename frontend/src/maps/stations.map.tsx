@@ -10,7 +10,7 @@ const OUTER_BOUNDS = [
     [80, 180],
 ];
 
-function StationsMap({ stations }: { stations: never[] }) {
+function StationsMap({ stations }: { stations: any[] }) {
 
     return (
         <>
