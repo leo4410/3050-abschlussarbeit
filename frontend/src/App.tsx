@@ -9,7 +9,35 @@ const STATIONDATA_URL = "http://localhost:8000/";
 function App() {
 
   const [menu, setMenu] = useState("Schneehöhen")
-  const [selectedStations, setSelectedStations] = useState<any[]>([])
+  const [selectedStations, setSelectedStations] = useState<any[]>([{
+    "network": "BEOB",
+    "station_code": "1JA0",
+    "label": "Jaunpass",
+    "active": true,
+    "lon": 7.339465,
+    "lat": 46.593472,
+    "elevation": 1520,
+    "type": null
+  }, {
+    "network": "BEOB",
+    "station_code": "1SM0",
+    "label": "Saanenmöser",
+    "active": true,
+    "lon": 7.297512,
+    "lat": 46.518764,
+    "elevation": 1390,
+    "type": null
+  }, {
+    "network": "IMIS",
+    "station_code": "STH1",
+    "label": "Stockhorn",
+    "active": true,
+    "lon": 7.538571,
+    "lat": 46.693863,
+    "elevation": 2190,
+    "type": "WIND"
+  },
+  ])
 
   return (
     <div>
