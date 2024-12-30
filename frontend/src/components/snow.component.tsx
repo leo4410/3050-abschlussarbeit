@@ -1,3 +1,4 @@
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -5,11 +6,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-function SnowComponent({ stations }: { stations: any[] }) {
+function SnowComponent({ selectedStations }: { selectedStations: any[] }) {
 
-    return (
+return (
         <>
-            {stations !== undefined &&
+            {selectedStations !== undefined &&
                 <div>
                     <TableContainer>
                         <Table aria-label="simple table">
@@ -23,7 +24,7 @@ function SnowComponent({ stations }: { stations: any[] }) {
                             </TableHead>
 
                             <TableBody>
-                                {stations.map((item, index) => (
+                                {selectedStations.map((item, index) => (
                                     <TableRow key={index}>
                                         <TableCell>{item["label"]}</TableCell>
                                         <TableCell>{item["station_code"]}</TableCell>

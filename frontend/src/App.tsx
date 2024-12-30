@@ -49,7 +49,7 @@ function App() {
       </ButtonGroup>
 
 
-      {menu === "Schneehöhen" && <SnowComponent stations={selectedStations}></SnowComponent>}
+      {menu === "Schneehöhen" && <SnowComponent selectedStations={selectedStations}></SnowComponent>}
       {menu === "Standorte" && <StationsComponent selectedStations={selectedStations} setSelectedStations={setSelectedStations}></StationsComponent>}
 
     </div>
