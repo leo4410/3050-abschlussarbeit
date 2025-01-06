@@ -1,0 +1,17 @@
+{
+    "name": "nextjs-fastapi",
+    "version": "0.2.0",
+    "private": true,
+    "scripts": {
+      "fastapi-dev": "python3 -m pip install -r backend/requirements.txt && python3 -m uvicorn backend.index:app --reload",
+      "next-dev": "npm --prefix frontend run dev",
+      "dev": "concurrently \"npm run next-dev\" \"npm run fastapi-dev\"",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+    },
+    "dependencies": {
+        "concurrently": "^9.0.1"
+      }
+  }
+  
