@@ -1,20 +1,37 @@
 {
-    "name": "nextjs-fastapi",
-    "version": "0.2.0",
-    "private": true,
-    "scripts": {
-      "fastapi-dev": "python3 -m pip install -r backend/requirements.txt && python3 -m uvicorn backend.index:app --reload",
-      "next-dev": "npm --prefix frontend run dev",
-      "dev": "concurrently \"npm run fastapi-dev\" \"npm run next-dev\"",
-      "fastapi-prod": "python3 -m pip install -r backend/requirements.txt && python3 -m uvicorn backend.index:app",
-      "next-prod": "npm --prefix frontend i && npm --prefix frontend run build",
-      "build": "concurrently \"npm run fastapi-prod\" \"npm run next-prod\"",
-      "start": "next start",
-      "lint": "next lint"
-    },
-    "dependencies": {
-        "concurrently": "^9.0.1",
-        "typescript": "5.6.2"
-      }
+  "name": "nextjs-fastapi",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "fastapi-dev": "pip3 install -r requirements.txt && python3 -m uvicorn api.index:app --reload",
+    "next-dev": "next dev",
+    "dev": "concurrently \"npm run next-dev\" \"npm run fastapi-dev\"",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@fontsource/roboto": "^5.1.0",
+    "@mui/icons-material": "^6.3.0",
+    "@mui/material": "^6.3.0",
+    "@mui/styled-engine-sc": "^6.3.0",
+    "leaflet": "^1.9.4",
+    "@types/node": "22.5.5",
+    "@types/react": "18.3.8",
+    "@types/react-dom": "18.3.0",
+    "autoprefixer": "10.4.20",
+    "concurrently": "^9.0.1",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.4",
+    "next": "^15.1.3",
+    "postcss": "^8.4.47",
+    "react": "^19.0.0-rc.1",
+    "react-dom": "^19.0.0-rc.1",
+    "react-leaflet": "^5.0.0-rc.2",
+    "tailwindcss": "3.4.12",
+    "typescript": "5.6.2",
+    "styled-components": "^6.1.13"
   }
-  
+}
