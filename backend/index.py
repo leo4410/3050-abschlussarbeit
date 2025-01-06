@@ -11,20 +11,24 @@ app.add_middleware(CORSMiddleware,
         allow_headers=["*"]
     )
 
+@app.get("/test")
+async def get_test():
+    return "test response"
+    
 
 @app.get("/stations")
-async def get_snow():
+async def get_stations():
     '''
     Get all stations
     '''
-    stations = get_stations()
+    stations = get_stations_csv()
     stations_json = stations.to_json(orient='records')
 
     return Response(stations_json, media_type="application/json")
 
 
 @app.get("/stations/{station_type}/")
-async def get_snow(station_type):
+async def get_stations(station_type):
     '''
     Get all stations by type
     '''
@@ -39,11 +43,11 @@ async def get_snow(station, year: int | None = None):
     '''
     Get snow data by station
     '''
-    stations =  get_stations()
+    stations =  get_stations_csv()
     if not stations["station_code"].eq(station).any():
         raise HTTPException(status_code=404, detail="Station not found")
 
-    snow = get_snow()
+    snow = get_snow_csv()
     snow = snow.loc[(snow["station_code"] == station)]
     
     if year:
@@ -60,7 +64,7 @@ async def get_snow(year, month: int | None = None, day: int | None = None):
     '''
     Get snow data by year
     '''
-    snow = get_snow()
+    snow = get_snow_csv()
     
     snow["measure_datetime"] = pd.to_datetime(snow["measure_date"])
     snow_filtered = snow.loc[(snow["measure_datetime"].dt.year == int(year))] 
@@ -78,13 +82,13 @@ async def get_snow(year, month: int | None = None, day: int | None = None):
     return Response(snow_json, media_type="application/json")
 
 
-def get_stations():
+def get_stations_csv():
     imis_stations=pd.read_csv(fr"backend\data\imis\stations.csv")
     beob_stations=pd.read_csv(fr"backend\data\beob\stations.csv")
     
     return pd.concat([imis_stations, beob_stations])
 
-def get_snow():
+def get_snow_csv():
     imis_snow=pd.read_csv(fr"backend\data\imis\daily_snow.csv")
     beob_snow=pd.read_csv(fr"backend\data\beob\daily_snow.csv")
     del beob_snow["HNW_1D"]
