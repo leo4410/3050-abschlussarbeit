@@ -5,11 +5,6 @@ import { Popup } from 'react-leaflet/Popup';
 import { TileLayer } from 'react-leaflet/TileLayer'
 import { BASE_LAYERS } from "./baseLayers.tsx";
 
-const OUTER_BOUNDS = [
-    [-80, -180],
-    [80, 180],
-];
-
 function StationsMap({ stations }: { stations: any[] }) {
 
     return (
@@ -30,7 +25,7 @@ function StationsMap({ stations }: { stations: any[] }) {
                     ))}
                 </LayersControl>
 
-                {stations.map((item, index) => (
+                {stations.map((item) => (
                     <Marker position={[item["lat"], item["lon"]]}>
                         <Popup>
                             {item["label"]} {item["station_code"]}
