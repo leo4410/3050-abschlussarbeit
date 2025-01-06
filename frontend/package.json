@@ -17,6 +17,7 @@
     "@mui/material": "^6.3.0",
     "@mui/styled-engine-sc": "^6.3.0",
     "leaflet": "^1.9.4",
+    "nextjs-fastapi": "file:..",
     "react": "^19.0.0-rc.1",
     "react-dom": "^19.0.0-rc.1",
     "react-leaflet": "^5.0.0-rc.2",

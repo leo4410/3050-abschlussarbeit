@@ -42,7 +42,7 @@ function App() {
         {menu === "Schneehöhen" && <Button value="Schneehöhen" variant="contained" onClick={(event) => { setMenu(event.currentTarget.value) }}>Schneehöhen</Button>}
         {menu !== "Schneehöhen" && <Button value="Schneehöhen" variant="outlined" onClick={(event) => { setMenu(event.currentTarget.value) }}>Schneehöhen</Button>}
         {menu === "Standorte" && <Button value="Standorte" variant="contained" onClick={(event) => { setMenu(event.currentTarget.value) }}>Standorte</Button>}
-        {menu !== "Standorte" && <Button value="Standorte" variant="outlined" onChange={(event) => { setMenu(event.currentTarget.value) }}>Standorte</Button>}
+        {menu !== "Standorte" && <Button value="Standorte" variant="outlined" onClick={(event) => { setMenu(event.currentTarget.value) }}>Standorte</Button>}
       </ButtonGroup>
 
 

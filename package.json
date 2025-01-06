@@ -5,8 +5,10 @@
     "scripts": {
       "fastapi-dev": "python3 -m pip install -r backend/requirements.txt && python3 -m uvicorn backend.index:app --reload",
       "next-dev": "npm --prefix frontend run dev",
-      "dev": "concurrently \"npm run next-dev\" \"npm run fastapi-dev\"",
-      "build": "npm --prefix frontend i && npm --prefix frontend run build",
+      "dev": "concurrently \"npm run fastapi-dev\" \"npm run next-dev\"",
+      "fastapi-prod": "python3 -m pip install -r backend/requirements.txt && python3 -m uvicorn backend.index:app",
+      "next-prod": "npm --prefix frontend i && npm --prefix frontend run build",
+      "build": "concurrently \"npm run fastapi-prod\" \"npm run next-prod\"",
       "start": "next start",
       "lint": "next lint"
     },
